@@ -3,7 +3,7 @@ package com.vls.smsverification
 import android.app.Activity
 import com.google.android.gms.auth.api.phone.SmsRetriever
 
-class OtpAutoFillReceiver(private var activity: Activity, private var otpListener: OtpListener, private var retrieverListener: OnStartSmsRetriverListener? = null) {
+class OtpAutoFillReceiver(private var activity: Activity, private var otpListener: OtpListener, private var retrieverListener: OnStartSmsRetrieverListener? = null) {
 
     constructor(activity: Activity, listener: OtpListener) : this(activity, listener, null)
 

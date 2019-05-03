@@ -3,7 +3,7 @@ package com.vls.smsverification
 import java.lang.Exception
 
 
-interface OnStartSmsRetriverListener {
+interface OnStartSmsRetrieverListener {
     fun onSuccess()
     fun onFail(e: Exception)
 }
