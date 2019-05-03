@@ -20,21 +20,27 @@ class CodeVerificationActivity : AppCompatActivity() {
         val task = client.startSmsRetriever()
         task.addOnSuccessListener {
             Log.d("vls", "Sms listener started!")
-            listenSms()
+            listenOtp()
         }
         task.addOnFailureListener { e ->
             Log.e("vls", "Failed to start sms retriever: ${e.message}")
         }
     }
 
-    private fun listenSms() {
-        SmsReceiver.bindListener(object : SmsListener {
+    private fun listenOtp() {
+        OtpReceiver.bindOtpListener(object : OtpListener {
             override fun onSuccess(code: String) {
                 etCode.setText(code)
             }
 
             override fun onError() {
                 Log.e("vls", "Error")
+            }
+
+            override fun onStatusCodeError() {
+            }
+
+            override fun onTimeout() {
             }
         })
     }

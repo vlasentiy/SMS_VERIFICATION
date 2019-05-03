@@ -10,15 +10,14 @@
         android:theme="@style/AppTheme">
 
         <receiver
-            android:name=".SmsReceiver"
+            android:name=".OtpReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED"/>
             </intent-filter>
         </receiver>
 
-        <activity android:name=".CodeVerificationActivity" />
-        <activity android:name=".PhoneNumberActivity">
+        <activity android:name=".CodeVerificationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

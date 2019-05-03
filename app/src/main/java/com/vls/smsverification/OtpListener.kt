@@ -1,6 +1,8 @@
 package com.vls.smsverification
 
-interface SmsListener {
+interface OtpListener {
     fun onSuccess(code: String)
     fun onError()
+    fun onStatusCodeError()
+    fun onTimeout()
 }
