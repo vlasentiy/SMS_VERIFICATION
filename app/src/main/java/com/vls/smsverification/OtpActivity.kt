@@ -2,16 +2,14 @@ package com.vls.smsverification
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.google.android.gms.auth.api.phone.SmsRetriever
-import kotlinx.android.synthetic.main.activity_code_verification.*
+import kotlinx.android.synthetic.main.activity_otp.*
 
 
-class CodeVerificationActivity : AppCompatActivity() {
+class OtpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_code_verification)
+        setContentView(R.layout.activity_otp)
 
         OtpAutoFillReceiver(this, object : OtpListener {
             override fun onSuccess(code: String) {
