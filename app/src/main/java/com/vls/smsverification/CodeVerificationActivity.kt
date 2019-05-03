@@ -12,36 +12,20 @@ class CodeVerificationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_code_verification)
-        startSmsRetriever()
-    }
 
-    private fun startSmsRetriever() {
-        val client = SmsRetriever.getClient(this)
-        val task = client.startSmsRetriever()
-        task.addOnSuccessListener {
-            Log.d("vls", "Sms listener started!")
-            listenOtp()
-        }
-        task.addOnFailureListener { e ->
-            Log.e("vls", "Failed to start sms retriever: ${e.message}")
-        }
-    }
-
-    private fun listenOtp() {
-        OtpReceiver.bindOtpListener(object : OtpListener {
+        OtpAutoFillReceiver(this, object : OtpListener {
             override fun onSuccess(code: String) {
                 etCode.setText(code)
             }
 
-            override fun onError() {
-                Log.e("vls", "Error")
+            override fun onError(errorMessage: String?) {
             }
 
-            override fun onStatusCodeError() {
+            override fun onEmptyMatchedResult(message: String) {
             }
 
             override fun onTimeout() {
             }
-        })
+        }).start()
     }
 }
